@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/register.dart'; // Asegúrate de que el nombre del archivo es correcto
+import 'screens/registro.dart'; // Asegúrate de que el nombre del archivo es correcto
 
 void main() {
   runApp(MyApp());
