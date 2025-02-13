@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'screens/registro.dart'; // Asegúrate de que el nombre del archivo es correcto
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal, // Puedes personalizar el tema
       ),
-      home: RegisterScreen(), // Establecer la vista de registro como principal
+      home:
+          const RegisterScreen(), // Establecer la vista de registro como principal
     );
   }
 }

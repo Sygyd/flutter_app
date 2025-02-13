@@ -3,6 +3,8 @@ import '../models/user.dart';
 import '../service/api_service.dart';
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
@@ -23,11 +25,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     bool success = await ApiService.registerUser(user);
     if (success) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Registro exitoso"),
       ));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Error al registrar"),
       ));
     }
@@ -36,27 +38,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Registro")),
+      appBar: AppBar(title: const Text("Registro")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
                 controller: nombreController,
-                decoration: InputDecoration(labelText: "Nombre")),
+                decoration: const InputDecoration(labelText: "Nombre")),
             TextField(
                 controller: apellidoController,
-                decoration: InputDecoration(labelText: "Apellido")),
+                decoration: const InputDecoration(labelText: "Apellido")),
             TextField(
                 controller: cedulaController,
-                decoration: InputDecoration(labelText: "Cédula")),
+                decoration: const InputDecoration(labelText: "Cédula")),
             TextField(
                 controller: emailController,
-                decoration: InputDecoration(labelText: "Email")),
-            SizedBox(height: 20),
+                decoration: const InputDecoration(labelText: "Email")),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: register,
-              child: Text("Registrarse"),
+              child: const Text("Registrarse"),
             ),
           ],
         ),
