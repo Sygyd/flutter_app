@@ -14,13 +14,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController apellidoController = TextEditingController();
   final TextEditingController cedulaController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController contrasenaController =
+      TextEditingController(); // Campo para la contraseña
 
   void register() async {
+    // Crear el objeto User con la contraseña incluida
     User user = User(
       nombre: nombreController.text,
       apellido: apellidoController.text,
       cedula: cedulaController.text,
       email: emailController.text,
+      contrasena: contrasenaController.text, // Agregar la contraseña al objeto
     );
 
     bool success = await ApiService.registerUser(user);
@@ -38,23 +42,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Registro")),
+      appBar: AppBar(title: Text("Registro")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             TextField(
-                controller: nombreController,
-                decoration: const InputDecoration(labelText: "Nombre")),
+              controller: nombreController,
+              decoration: const InputDecoration(labelText: "Nombre"),
+            ),
             TextField(
-                controller: apellidoController,
-                decoration: const InputDecoration(labelText: "Apellido")),
+              controller: apellidoController,
+              decoration: const InputDecoration(labelText: "Apellido"),
+            ),
             TextField(
-                controller: cedulaController,
-                decoration: const InputDecoration(labelText: "Cédula")),
+              controller: cedulaController,
+              decoration: const InputDecoration(labelText: "Cédula"),
+            ),
             TextField(
-                controller: emailController,
-                decoration: const InputDecoration(labelText: "Email")),
+              controller: emailController,
+              decoration: const InputDecoration(labelText: "Email"),
+            ),
+            TextField(
+              controller: contrasenaController, // Campo para la contraseña
+              obscureText: true, // Para ocultar la contraseña al escribir
+              decoration: const InputDecoration(labelText: "Contraseña"),
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: register,

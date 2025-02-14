@@ -1,33 +1,26 @@
 class User {
-  String nombre;
-  String apellido;
-  String cedula;
-  String email;
+  final String nombre;
+  final String apellido;
+  final String cedula;
+  final String email;
+  final String contrasena; // Nuevo campo para la contraseña
 
   User({
     required this.nombre,
     required this.apellido,
     required this.cedula,
     required this.email,
+    required this.contrasena, // Asegúrate de que el constructor acepte la contraseña
   });
 
-  // Convertir de JSON a User
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      nombre: json['nombre'],
-      apellido: json['apellido'],
-      cedula: json['cedula'],
-      email: json['email'],
-    );
-  }
-
-  // Convertir de User a JSON
+  // Convierte el objeto a un mapa de datos para enviar al backend
   Map<String, dynamic> toJson() {
     return {
       'nombre': nombre,
       'apellido': apellido,
       'cedula': cedula,
       'email': email,
+      'contrasena': contrasena, // Agrega la contraseña al JSON
     };
   }
 }
