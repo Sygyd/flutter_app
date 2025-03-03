@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Le Brunch App',
       theme: lightMode,
       home:
-          const WelcomeScreen(), // Establecer la vista de registro como principal
+          const menu(), // Establecer la vista de registro como principal
     );
   }
 }
