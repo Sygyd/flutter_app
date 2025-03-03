@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '/theme/theme.dart';
-import 'screens/welcome.dart'; // Asegúrate de que el nombre del archivo es correcto
+import 'screens/welcome.dart';
+import 'screens/menu.dart'; // Asegúrate de que el nombre del archivo es correcto
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, // Quita la etiqueta de depuración
       title: 'Le Brunch App',
       theme: lightMode,
-      home:
-          const menu(), // Establecer la vista de registro como principal
+      home: MenuScreen(), // Establecer la vista de registro como principal
     );
   }
 }
