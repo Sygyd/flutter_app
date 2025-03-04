@@ -11,7 +11,8 @@ class _MenuScreenState extends State<MenuScreen> {
   final TextEditingController _nombreController = TextEditingController();
   final TextEditingController _categoriaController = TextEditingController();
   final TextEditingController _precioController = TextEditingController();
-  final TextEditingController _disponibilidadController = TextEditingController();
+  final TextEditingController _disponibilidadController =
+      TextEditingController();
   final TextEditingController _ingredientesController = TextEditingController();
 
   List<Map<String, dynamic>> _menuItems = [];
@@ -23,10 +24,11 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   Future<void> fetchMenu() async {
-    final response = await http.get(Uri.parse("http://localhost:3000/menu"));
+    final response = await http.get(Uri.parse("http://10.0.2.2:3000"));
     if (response.statusCode == 200) {
       setState(() {
-        _menuItems = List<Map<String, dynamic>>.from(json.decode(response.body));
+        _menuItems =
+            List<Map<String, dynamic>>.from(json.decode(response.body));
       });
     } else {
       print("Error al obtener los datos");
@@ -40,10 +42,14 @@ class _MenuScreenState extends State<MenuScreen> {
     final String disponibilidad = _disponibilidadController.text;
     final String ingredientes = _ingredientesController.text;
 
-    if (nombre.isEmpty || categoria.isEmpty || precio.isEmpty || disponibilidad.isEmpty || ingredientes.isEmpty) return;
+    if (nombre.isEmpty ||
+        categoria.isEmpty ||
+        precio.isEmpty ||
+        disponibilidad.isEmpty ||
+        ingredientes.isEmpty) return;
 
     final response = await http.post(
-      Uri.parse("http://localhost:3000/menu"),
+      Uri.parse("http://10.0.2.2:3000"),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode({
         "nombre": nombre,
@@ -89,11 +95,13 @@ class _MenuScreenState extends State<MenuScreen> {
             ),
             TextField(
               controller: _disponibilidadController,
-              decoration: InputDecoration(labelText: "Disponibilidad (true/false)"),
+              decoration:
+                  InputDecoration(labelText: "Disponibilidad (true/false)"),
             ),
             TextField(
               controller: _ingredientesController,
-              decoration: InputDecoration(labelText: "Ingredientes (separados por coma)"),
+              decoration: InputDecoration(
+                  labelText: "Ingredientes (separados por coma)"),
             ),
             SizedBox(height: 10),
             ElevatedButton(
@@ -107,15 +115,20 @@ class _MenuScreenState extends State<MenuScreen> {
                   final item = _menuItems[index];
                   return ListTile(
                     title: Text(item['nombre']),
-                    subtitle: Text("${item['categoria']} - ${item['ingredientes']}"),
+                    subtitle:
+                        Text("${item['categoria']} - ${item['ingredientes']}"),
                     trailing: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text("\$${item['precio']}"),
                         Text(
-                          item['disponibilidad'] ? "Disponible" : "No disponible",
+                          item['disponibilidad']
+                              ? "Disponible"
+                              : "No disponible",
                           style: TextStyle(
-                            color: item['disponibilidad'] ? Colors.green : Colors.red,
+                            color: item['disponibilidad']
+                                ? Colors.green
+                                : Colors.red,
                           ),
                         ),
                       ],
