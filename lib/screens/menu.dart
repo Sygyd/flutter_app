@@ -24,7 +24,7 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   Future<void> fetchMenu() async {
-    final response = await http.get(Uri.parse("http://10.0.2.2:3000"));
+    final response = await http.get(Uri.parse("http://10.0.2.2:3000/menu"));
     if (response.statusCode == 200) {
       setState(() {
         _menuItems =
@@ -49,7 +49,7 @@ class _MenuScreenState extends State<MenuScreen> {
         ingredientes.isEmpty) return;
 
     final response = await http.post(
-      Uri.parse("http://10.0.2.2:3000"),
+      Uri.parse("http://10.0.2.2:3000/menu"),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode({
         "nombre": nombre,
