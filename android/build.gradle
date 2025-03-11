@@ -1,24 +1,8 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.2'  // 👈 Agrega esta línea aquí
-    }
-}
-
-
 allprojects {
     repositories {
         google()
         mavenCentral()
-         maven { url 'https://storage.googleapis.com/download.flutter.io' }
     }
-
-   
-
-
 }
 
 rootProject.buildDir = "../build"
